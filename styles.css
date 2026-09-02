@@ -1,0 +1,385 @@
+```css
+/* =========================================================
+   SISTEMA DE DESIGN
+   ========================================================= */
+
+:root {
+    --cor-fundo: #f4f6f8;
+    --cor-superficie: #ffffff;
+    --cor-texto: #1f2933;
+    --cor-texto-secundario: #52606d;
+    --cor-borda: #cbd2d9;
+
+    --cor-a-fazer: #475569;
+    --cor-em-andamento: #0369a1;
+    --cor-em-revisao: #92400e;
+    --cor-concluida: #166534;
+
+    --cor-foco: #005fcc;
+
+    --espaco-1: 0.5rem;
+    --espaco-2: 1rem;
+    --espaco-3: 1.5rem;
+    --espaco-4: 2rem;
+
+    --raio: 0.75rem;
+}
+
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.cabecalho {
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: var(--espaco-3);
+}
+
+.cabecalho h1 {
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+main {
+    width: min(100% - 2rem, 75rem);
+    margin: 0 auto;
+    padding: var(--espaco-3) 0;
+    display: grid;
+    gap: var(--espaco-3);
+}
+
+
+/* =========================================================
+   BUSCA E FILTROS
+   ========================================================= */
+
+.filtros {
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: var(--espaco-3);
+}
+
+.filtros h2 {
+    margin-bottom: var(--espaco-2);
+}
+
+.formulario-filtros {
+    display: grid;
+    gap: var(--espaco-2);
+}
+
+.campo-busca,
+fieldset {
+    min-width: 0;
+}
+
+.campo-busca {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+}
+
+label,
+legend {
+    font-weight: 700;
+}
+
+input,
+select {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.5rem;
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+    font: inherit;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.5rem;
+    padding: var(--espaco-2);
+}
+
+
+/* =========================================================
+   QUADRO DE TAREFAS
+   MOBILE-FIRST: uma coluna inicialmente
+   ========================================================= */
+
+.coluna {
+    min-width: 0;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-top: 0.4rem solid var(--cor-status);
+    border-radius: var(--raio);
+    padding: var(--espaco-2);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.coluna-a-fazer {
+    --cor-status: var(--cor-a-fazer);
+}
+
+.coluna-em-andamento {
+    --cor-status: var(--cor-em-andamento);
+}
+
+.coluna-em-revisao {
+    --cor-status: var(--cor-em-revisao);
+}
+
+.coluna-concluida {
+    --cor-status: var(--cor-concluida);
+}
+
+.coluna > h2 {
+    color: var(--cor-status);
+}
+
+.lista-tarefas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+
+/* =========================================================
+   CARTÕES DE TAREFA
+   ========================================================= */
+
+.lista-tarefas li {
+    min-width: 0;
+}
+
+.cartao-tarefa {
+    min-width: 0;
+    min-height: 12rem;
+
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.6rem;
+
+    padding: var(--espaco-2);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.cartao-conteudo {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+}
+
+.cartao-cabecalho {
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espaco-2);
+}
+
+.cartao-cabecalho h3 {
+    min-width: 0;
+    flex: 1;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cartao-tarefa p {
+    color: var(--cor-texto-secundario);
+}
+
+.prioridade {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 4.5rem;
+    min-height: 1.75rem;
+
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.prioridade-alta {
+    background-color: #991b1b;
+}
+
+.prioridade-media {
+    background-color: #92400e;
+}
+
+.prioridade-baixa {
+    background-color: #166534;
+}
+
+.prazo {
+    margin-top: auto;
+    padding-top: var(--espaco-1);
+    border-top: 1px solid var(--cor-borda);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FOCO VISÍVEL
+   ========================================================= */
+
+input:focus-visible,
+select:focus-visible {
+    outline: 0.2rem solid var(--cor-foco);
+    outline-offset: 0.15rem;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.rodape {
+    margin-top: var(--espaco-3);
+    padding: var(--espaco-3);
+
+    background-color: var(--cor-superficie);
+    border-top: 1px solid var(--cor-borda);
+
+    text-align: center;
+}
+
+.rodape p + p {
+    margin-top: var(--espaco-1);
+}
+
+
+/* =========================================================
+   BREAKPOINT 1
+   A partir de 42rem, os filtros ficam lado a lado.
+   Isso evita que os campos fiquem excessivamente altos
+   quando existe espaço horizontal suficiente.
+   ========================================================= */
+
+@media (min-width: 42rem) {
+
+    .formulario-filtros {
+        grid-template-columns: 2fr 1fr 1fr;
+        align-items: end;
+    }
+
+}
+
+
+/* =========================================================
+   BREAKPOINT 2
+   A partir de 55rem, duas colunas melhoram a leitura
+   dos cartões e aproveitam melhor a largura disponível.
+   ========================================================= */
+
+@media (min-width: 55rem) {
+
+    main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filtros {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================================
+   BREAKPOINT 3
+   A partir de 70rem, quatro colunas passam a caber com
+   conforto. Cada status fica lado a lado como um quadro.
+   ========================================================= */
+
+@media (min-width: 70rem) {
+
+    main {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        align-items: start;
+    }
+
+    .filtros {
+        grid-column: 1 / -1;
+    }
+
+}
