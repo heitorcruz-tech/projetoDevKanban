@@ -1,0 +1,53 @@
+{
+  "tarefas": [
+    {
+      "id": 1,
+      "titulo": "Pesquisar referências para o projeto",
+      "status": "a-fazer",
+      "prioridade": "alta",
+      "prazo": "05/09/2026"
+    },
+    {
+      "id": 2,
+      "titulo": "Definir requisitos do sistema",
+      "status": "a-fazer",
+      "prioridade": "media",
+      "prazo": "07/09/2026"
+    },
+    {
+      "id": 3,
+      "titulo": "Desenvolver página inicial",
+      "status": "em-andamento",
+      "prioridade": "alta",
+      "prazo": "10/09/2026"
+    },
+     {
+      "id": 5,
+      "titulo": "Revisar documentação do projeto",
+      "status": "em-revisao",
+      "prioridade": "media",
+      "prazo": "15/09/2026"
+    },
+    {
+      "id": 6,
+      "titulo": "Testar funcionalidades do sistema",
+      "status": "em-revisao",
+      "prioridade": "alta",
+      "prazo": "17/09/2026"
+    },
+    {
+      "id": 7,
+      "titulo": "Definir tema do projeto",
+      "status": "concluida",
+      "prioridade": "baixa",
+      "prazo": "01/09/2026"
+    },
+    {
+      "id": 8,
+      "titulo": "Criar protótipo da aplicação",
+      "status": "concluida",
+      "prioridade": "media",
+      "prazo": "03/09/2026"
+    }
+  ]
+}

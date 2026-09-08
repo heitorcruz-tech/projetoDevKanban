@@ -13,6 +13,25 @@ export async function carregarTarefas() {
 
     return dados.tarefas;
 }
+export function renderizarEstado(estado, dados) {
+    const status = document.querySelector("#status");
+
+    if (estado === "carregando") {
+        status.textContent = "Carregando tarefas...";
+    }
+
+    if (estado === "sucesso") {
+        status.textContent = `${dados.length} tarefas carregadas.`;
+    }
+
+    if (estado === "vazio") {
+        status.textContent = "Não há tarefas cadastradas.";
+    }
+
+    if (estado === "erro") {
+        status.textContent = dados;
+    }
+}
 async function iniciar() {
     renderizarEstado("carregando");
 
