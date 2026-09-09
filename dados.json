@@ -3,6 +3,8 @@
     {
       "id": 1,
       "titulo": "Pesquisar referências para o projeto",
+      "projeto": "Sistema Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "a-fazer",
       "prioridade": "alta",
       "prazo": "05/09/2026"
@@ -10,6 +12,8 @@
     {
       "id": 2,
       "titulo": "Definir requisitos do sistema",
+      "projeto": "Sistema Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "a-fazer",
       "prioridade": "media",
       "prazo": "07/09/2026"
@@ -17,13 +21,26 @@
     {
       "id": 3,
       "titulo": "Desenvolver página inicial",
+      "projeto": "Portal Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "em-andamento",
       "prioridade": "alta",
       "prazo": "10/09/2026"
     },
-     {
+    {
+      "id": 4,
+      "titulo": "Criar estrutura do banco de dados",
+      "projeto": "Sistema Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
+      "status": "em-andamento",
+      "prioridade": "baixa",
+      "prazo": "12/09/2026"
+    },
+    {
       "id": 5,
       "titulo": "Revisar documentação do projeto",
+      "projeto": "Portal Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "em-revisao",
       "prioridade": "media",
       "prazo": "15/09/2026"
@@ -31,6 +48,8 @@
     {
       "id": 6,
       "titulo": "Testar funcionalidades do sistema",
+      "projeto": "Sistema Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "em-revisao",
       "prioridade": "alta",
       "prazo": "17/09/2026"
@@ -38,6 +57,8 @@
     {
       "id": 7,
       "titulo": "Definir tema do projeto",
+      "projeto": "Portal Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "concluida",
       "prioridade": "baixa",
       "prazo": "01/09/2026"
@@ -45,6 +66,8 @@
     {
       "id": 8,
       "titulo": "Criar protótipo da aplicação",
+      "projeto": "Sistema Acadêmico",
+      "responsavel": "Heitor Mota da Cruz",
       "status": "concluida",
       "prioridade": "media",
       "prazo": "03/09/2026"
