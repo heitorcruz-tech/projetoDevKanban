@@ -1,3 +1,12 @@
+const estado = {
+    tarefas: [],
+    busca: "",
+    status: "todos",
+    prioridade: "todas",
+    ordenacao: "nenhuma",
+    carregamento: "idle",
+    erro: null
+};
 export async function carregarTarefas() {
 
     const resposta = await fetch("./dados.json");

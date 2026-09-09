@@ -1,21 +1,26 @@
-```css
 /* =========================================================
    SISTEMA DE DESIGN
    ========================================================= */
 
 :root {
-    --cor-fundo: #f4f6f8;
+    --cor-fundo: #f4f5f7;
     --cor-superficie: #ffffff;
-    --cor-texto: #1f2933;
-    --cor-texto-secundario: #52606d;
-    --cor-borda: #cbd2d9;
 
-    --cor-a-fazer: #475569;
-    --cor-em-andamento: #0369a1;
-    --cor-em-revisao: #92400e;
-    --cor-concluida: #166534;
+    --cor-texto: #172b4d;
+    --cor-texto-secundario: #5e6c84;
+
+    --cor-borda: #dfe1e6;
+
+    --cor-a-fazer: #8b5cf6;
+    --cor-em-andamento: #0891b2;
+    --cor-em-revisao: #d97706;
+    --cor-concluida: #059669;
 
     --cor-foco: #005fcc;
+
+    --cor-alta: #dc2626;
+    --cor-media: #d97706;
+    --cor-baixa: #059669;
 
     --espaco-1: 0.5rem;
     --espaco-2: 1rem;
@@ -41,10 +46,13 @@ html {
 body {
     margin: 0;
     padding: 0;
+
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
+
     font-family: Arial, sans-serif;
     line-height: 1.5;
+
     overflow-x: hidden;
 }
 
@@ -60,15 +68,15 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 
@@ -77,14 +85,20 @@ p {
    ========================================================= */
 
 .cabecalho {
-    background-color: var(--cor-superficie);
-    border-bottom: 1px solid var(--cor-borda);
+    background-color: #172b4d;
+    color: #ffffff;
+
     padding: var(--espaco-3);
 }
 
-.cabecalho h1 {
-    max-width: 75rem;
+.cabecalho-conteudo {
+    width: min(100%, 90rem);
     margin: 0 auto;
+}
+
+.cabecalho p {
+    margin-top: var(--espaco-1);
+    color: #dfe1e6;
 }
 
 
@@ -93,9 +107,12 @@ p {
    ========================================================= */
 
 main {
-    width: min(100% - 2rem, 75rem);
+    width: min(100% - 2rem, 90rem);
+
     margin: 0 auto;
+
     padding: var(--espaco-3) 0;
+
     display: grid;
     gap: var(--espaco-3);
 }
@@ -107,9 +124,13 @@ main {
 
 .filtros {
     background-color: var(--cor-superficie);
+
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio);
+
     padding: var(--espaco-3);
+
+    box-shadow: 0 0.15rem 0.4rem rgba(9, 30, 66, 0.08);
 }
 
 .filtros h2 {
@@ -140,41 +161,75 @@ legend {
 input,
 select {
     width: 100%;
+
     min-height: 2.75rem;
+
     padding: 0.5rem 0.75rem;
+
     border: 1px solid var(--cor-borda);
     border-radius: 0.5rem;
+
     background-color: var(--cor-superficie);
     color: var(--cor-texto);
+
     font: inherit;
 }
 
 fieldset {
     display: flex;
     flex-direction: column;
+
     gap: var(--espaco-1);
+
     border: 1px solid var(--cor-borda);
     border-radius: 0.5rem;
+
     padding: var(--espaco-2);
+}
+
+#mensagem-status {
+    margin-bottom: var(--espaco-2);
+
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
 }
 
 
 /* =========================================================
-   QUADRO DE TAREFAS
-   MOBILE-FIRST: uma coluna inicialmente
+   QUADRO KANBAN
+   MOBILE-FIRST
+   ========================================================= */
+
+.quadro-kanban {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: var(--espaco-2);
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   COLUNAS
    ========================================================= */
 
 .coluna {
     min-width: 0;
-    background-color: var(--cor-superficie);
-    border: 1px solid var(--cor-borda);
-    border-top: 0.4rem solid var(--cor-status);
+
+    background-color: #ebecf0;
+
     border-radius: var(--raio);
+
     padding: var(--espaco-2);
 
     display: flex;
     flex-direction: column;
+
     gap: var(--espaco-2);
+
+    border-top: 0.35rem solid var(--cor-status);
 }
 
 .coluna-a-fazer {
@@ -193,78 +248,169 @@ fieldset {
     --cor-status: var(--cor-concluida);
 }
 
-.coluna > h2 {
-    color: var(--cor-status);
+
+/* =========================================================
+   CABEÇALHO DAS COLUNAS
+   ========================================================= */
+
+.cabecalho-coluna {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--espaco-2);
 }
 
-.lista-tarefas {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.cabecalho-coluna h2 {
+    color: var(--cor-status);
 
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-2);
+    text-transform: uppercase;
+
+    font-size: 1rem;
+}
+
+.contador {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+
+    padding: 0.2rem 0.45rem;
+
+    border-radius: 999px;
+
+    background-color: var(--cor-status);
+
+    color: #ffffff;
+
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   CARTÕES DE TAREFA
+   LISTA DE TAREFAS
    ========================================================= */
+
+.lista-tarefas {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espaco-2);
+
+    min-width: 0;
+}
 
 .lista-tarefas li {
     min-width: 0;
 }
 
+
+/* =========================================================
+   CARTÕES
+   ========================================================= */
+
 .cartao-tarefa {
     min-width: 0;
+
     min-height: 12rem;
 
     background-color: var(--cor-superficie);
+
     border: 1px solid var(--cor-borda);
+
     border-radius: 0.6rem;
 
     padding: var(--espaco-2);
 
     display: flex;
+
     flex-direction: column;
+
     gap: var(--espaco-2);
+
+    box-shadow: 0 0.15rem 0.3rem rgba(9, 30, 66, 0.12);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.cartao-conteudo {
-    min-width: 0;
+.cartao-tarefa:hover {
+    transform: translateY(-0.1rem);
 
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-1);
+    box-shadow: 0 0.3rem 0.6rem rgba(9, 30, 66, 0.15);
 }
+
+
+/* =========================================================
+   CABEÇALHO DO CARTÃO
+   ========================================================= */
 
 .cartao-cabecalho {
     min-width: 0;
 
     display: flex;
+
     align-items: flex-start;
+
     justify-content: space-between;
+
     gap: var(--espaco-2);
 }
 
 .cartao-cabecalho h3 {
     min-width: 0;
+
     flex: 1;
 
     overflow: hidden;
+
     white-space: nowrap;
+
     text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO CARTÃO
+   ========================================================= */
+
+.cartao-conteudo {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espaco-1);
 }
 
 .cartao-tarefa p {
     color: var(--cor-texto-secundario);
+
+    font-size: 0.9rem;
 }
+
+
+/* =========================================================
+   PRIORIDADES
+   ========================================================= */
 
 .prioridade {
     flex: 0 0 auto;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -272,29 +418,44 @@ fieldset {
     min-height: 1.75rem;
 
     padding: 0.25rem 0.5rem;
+
     border-radius: 999px;
 
     color: #ffffff;
-    font-size: 0.875rem;
+
+    font-size: 0.75rem;
+
     font-weight: 700;
+
+    text-transform: uppercase;
 }
 
 .prioridade-alta {
-    background-color: #991b1b;
+    background-color: var(--cor-alta);
 }
 
 .prioridade-media {
-    background-color: #92400e;
+    background-color: var(--cor-media);
 }
 
 .prioridade-baixa {
-    background-color: #166534;
+    background-color: var(--cor-baixa);
 }
+
+
+/* =========================================================
+   PRAZO
+   ========================================================= */
 
 .prazo {
     margin-top: auto;
+
     padding-top: var(--espaco-1);
+
     border-top: 1px solid var(--cor-borda);
+
+    color: var(--cor-texto);
+
     font-weight: 700;
 }
 
@@ -306,6 +467,7 @@ fieldset {
 input:focus-visible,
 select:focus-visible {
     outline: 0.2rem solid var(--cor-foco);
+
     outline-offset: 0.15rem;
 }
 
@@ -316,30 +478,32 @@ select:focus-visible {
 
 .rodape {
     margin-top: var(--espaco-3);
+
     padding: var(--espaco-3);
 
-    background-color: var(--cor-superficie);
-    border-top: 1px solid var(--cor-borda);
+    background-color: #172b4d;
+
+    color: #ffffff;
 
     text-align: center;
 }
 
 .rodape p + p {
     margin-top: var(--espaco-1);
+
+    color: #dfe1e6;
 }
 
 
 /* =========================================================
    BREAKPOINT 1
-   A partir de 42rem, os filtros ficam lado a lado.
-   Isso evita que os campos fiquem excessivamente altos
-   quando existe espaço horizontal suficiente.
    ========================================================= */
 
 @media (min-width: 42rem) {
 
     .formulario-filtros {
         grid-template-columns: 2fr 1fr 1fr;
+
         align-items: end;
     }
 
@@ -348,18 +512,12 @@ select:focus-visible {
 
 /* =========================================================
    BREAKPOINT 2
-   A partir de 55rem, duas colunas melhoram a leitura
-   dos cartões e aproveitam melhor a largura disponível.
    ========================================================= */
 
 @media (min-width: 55rem) {
 
-    main {
+    .quadro-kanban {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .filtros {
-        grid-column: 1 / -1;
     }
 
 }
@@ -367,19 +525,15 @@ select:focus-visible {
 
 /* =========================================================
    BREAKPOINT 3
-   A partir de 70rem, quatro colunas passam a caber com
-   conforto. Cada status fica lado a lado como um quadro.
+   KANBAN COM 4 COLUNAS
    ========================================================= */
 
 @media (min-width: 70rem) {
 
-    main {
+    .quadro-kanban {
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        align-items: start;
-    }
 
-    .filtros {
-        grid-column: 1 / -1;
+        align-items: start;
     }
 
 }
