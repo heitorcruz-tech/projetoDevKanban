@@ -1,181 +1,169 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gerenciador de Tarefas Acadêmicas</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <header>
-    <h1>Gerenciador de Tarefas Acadêmicas</h1>
-    <link rel="stylesheet" href="styles.css">
-</header>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo">
+            <h1>Gerenciador de Tarefas Acadêmicas</h1>
+            <p>Organize e acompanhe suas atividades acadêmicas.</p>
+        </div>
+    </header>
 
-<main>
+    <main>
 
-    <section aria-labelledby="titulo-busca">
-    <div id="status" role="status" aria-live="polite"></div>
-        <h2 id="titulo-busca">Busca e filtros</h2>
+        <!-- BUSCA E FILTROS -->
+        <section class="filtros" aria-labelledby="titulo-filtros">
 
-        <form>
-            <label for="busca">Buscar tarefa por título:</label>
-            <input type="search" id="busca" name="busca">
+            <h2 id="titulo-filtros">Busca e filtros</h2>
 
-            <fieldset>
-                <legend>Filtrar por status</legend>
+            <div id="mensagem-status"
+                 role="status"
+                 aria-live="polite"></div>
 
-                <label for="status">Status:</label>
-                <select id="status" name="status">
-                    <option value="todos">Todos</option>
-                    <option value="a-fazer">A fazer</option>
-                    <option value="em-andamento">Em andamento</option>
-                    <option value="em-revisao">Em revisão</option>
-                    <option value="concluida">Concluída</option>
-                </select>
-            </fieldset>
+            <form class="formulario-filtros">
 
-            <fieldset>
-                <legend>Filtrar por prioridade</legend>
+                <div class="campo-busca">
+                    <label for="busca">Buscar tarefa por título:</label>
 
-                <label for="prioridade">Prioridade:</label>
-                <select id="prioridade" name="prioridade">
-                    <option value="todas">Todas</option>
-                    <option value="baixa">Baixa</option>
-                    <option value="media">Média</option>
-                    <option value="alta">Alta</option>
-                </select>
-            </fieldset>
-        </form>
-    </section>
+                    <input
+                        type="search"
+                        id="busca"
+                        name="busca"
+                        placeholder="Digite o nome da tarefa..."
+                    >
+                </div>
 
+                <fieldset>
+                    <legend>Filtrar por status</legend>
 
-    <section aria-labelledby="titulo-a-fazer">
-        <h2 id="titulo-a-fazer">A fazer</h2>
+                    <label for="filtro-status">Status:</label>
 
-        <ul>
+                    <select id="filtro-status" name="status">
+                        <option value="todos">Todos</option>
+                        <option value="a-fazer">A fazer</option>
+                        <option value="em-andamento">Em andamento</option>
+                        <option value="em-revisao">Em revisão</option>
+                        <option value="concluida">Concluída</option>
+                    </select>
+                </fieldset>
 
-            <li>
-                <article>
-                    <h3>Pesquisar referências para o projeto</h3>
-                    <p>Projeto: Sistema Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 05/09/2026</p>
-                    <p>Prioridade: Alta</p>
-                </article>
-            </li>
+                <fieldset>
+                    <legend>Filtrar por prioridade</legend>
 
-            <li>
-                <article>
-                    <h3>Definir requisitos do sistema</h3>
-                    <p>Projeto: Sistema Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 07/09/2026</p>
-                    <p>Prioridade: Média</p>
-                </article>
-            </li>
+                    <label for="filtro-prioridade">Prioridade:</label>
 
-        </ul>
-    </section>
+                    <select id="filtro-prioridade" name="prioridade">
+                        <option value="todas">Todas</option>
+                        <option value="baixa">Baixa</option>
+                        <option value="media">Média</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </fieldset>
+
+            </form>
+        </section>
 
 
-    <section aria-labelledby="titulo-em-andamento">
-        <h2 id="titulo-em-andamento">Em andamento</h2>
+        <!-- QUADRO KANBAN -->
+        <div class="quadro-kanban">
 
-        <ul>
+            <!-- A FAZER -->
+            <section
+                class="coluna coluna-a-fazer"
+                aria-labelledby="titulo-a-fazer"
+            >
 
-            <li>
-                <article>
-                    <h3>Desenvolver página inicial</h3>
-                    <p>Projeto: Portal Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 10/09/2026</p>
-                    <p>Prioridade: Alta</p>
-                </article>
-            </li>
+                <div class="cabecalho-coluna">
+                    <h2 id="titulo-a-fazer">A fazer</h2>
+                    <span class="contador" id="contador-a-fazer">0</span>
+                </div>
 
-            <li>
-                <article>
-                    <h3>Criar estrutura do banco de dados</h3>
-                    <p>Projeto: Sistema Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 12/09/2026</p>
-                    <p>Prioridade: Baixa</p>
-                </article>
-            </li>
+                <ul
+                    class="lista-tarefas"
+                    id="lista-a-fazer"
+                ></ul>
 
-        </ul>
-    </section>
+            </section>
 
 
-    <section aria-labelledby="titulo-em-revisao">
-        <h2 id="titulo-em-revisao">Em revisão</h2>
+            <!-- EM ANDAMENTO -->
+            <section
+                class="coluna coluna-em-andamento"
+                aria-labelledby="titulo-em-andamento"
+            >
 
-        <ul>
+                <div class="cabecalho-coluna">
+                    <h2 id="titulo-em-andamento">Em andamento</h2>
+                    <span class="contador" id="contador-em-andamento">0</span>
+                </div>
 
-            <li>
-                <article>
-                    <h3>Revisar documentação do projeto</h3>
-                    <p>Projeto: Portal Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 15/09/2026</p>
-                    <p>Prioridade: Média</p>
-                </article>
-            </li>
+                <ul
+                    class="lista-tarefas"
+                    id="lista-em-andamento"
+                ></ul>
 
-            <li>
-                <article>
-                    <h3>Testar funcionalidades do sistema</h3>
-                    <p>Projeto: Sistema Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 17/09/2026</p>
-                    <p>Prioridade: Alta</p>
-                </article>
-            </li>
-
-        </ul>
-    </section>
+            </section>
 
 
-    <section aria-labelledby="titulo-concluida">
-        <h2 id="titulo-concluida">Concluída</h2>
+            <!-- EM REVISÃO -->
+            <section
+                class="coluna coluna-em-revisao"
+                aria-labelledby="titulo-em-revisao"
+            >
 
-        <ul>
+                <div class="cabecalho-coluna">
+                    <h2 id="titulo-em-revisao">Em revisão</h2>
+                    <span class="contador" id="contador-em-revisao">0</span>
+                </div>
 
-            <li>
-                <article>
-                    <h3>Definir tema do projeto</h3>
-                    <p>Projeto: Portal Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 01/09/2026</p>
-                    <p>Prioridade: Baixa</p>
-                </article>
-            </li>
+                <ul
+                    class="lista-tarefas"
+                    id="lista-em-revisao"
+                ></ul>
 
-            <li>
-                <article>
-                    <h3>Criar protótipo da aplicação</h3>
-                    <p>Projeto: Sistema Acadêmico</p>
-                    <p>Responsável: Heitor Mota da Cruz</p>
-                    <p>Prazo: 03/09/2026</p>
-                    <p>Prioridade: Média</p>
-                </article>
-            </li>
-
-        </ul>
-    </section>
-
-</main>
+            </section>
 
 
-<footer>
-    <p>Heitor Mota da Cruz</p>
-    <p>Disciplina: DESENVOLVIMENTO FRONT-END</p>
-</footer>
-    <script src="./js/api.js" defer></script>
+            <!-- CONCLUÍDA -->
+            <section
+                class="coluna coluna-concluida"
+                aria-labelledby="titulo-concluida"
+            >
+
+                <div class="cabecalho-coluna">
+                    <h2 id="titulo-concluida">Concluída</h2>
+                    <span class="contador" id="contador-concluida">0</span>
+                </div>
+
+                <ul
+                    class="lista-tarefas"
+                    id="lista-concluida"
+                ></ul>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="rodape">
+        <p>Heitor Mota da Cruz</p>
+        <p>Disciplina: DESENVOLVIMENTO FRONT-END</p>
+    </footer>
+
+
+    <script type="module" src="./js/api.js"></script>
 
 </body>
 
