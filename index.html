@@ -1,113 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<main>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas Acadêmicas</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <div class="layout-principal">
 
-<body>
-
-    <!-- BARRA SUPERIOR -->
-    <header class="cabecalho">
-        <div class="cabecalho-conteudo">
-
-            <div class="marca">
-                <div class="icone-marca" aria-hidden="true">✓</div>
-
-                <div>
-                    <h1>Gerenciador de Tarefas</h1>
-                    <p>Organize e acompanhe suas atividades acadêmicas.</p>
-                </div>
-            </div>
-
-            <div class="barra-busca">
-                <label for="busca">Buscar tarefa por título:</label>
-
-                <div class="campo-busca">
-                    <span class="icone-busca" aria-hidden="true">⌕</span>
-
-                    <input
-                        type="search"
-                        id="busca"
-                        name="busca"
-                        placeholder="Buscar tarefa..."
-                    >
-                </div>
-            </div>
-
-        </div>
-    </header>
-
-
-    <main>
-
-        <!-- PRIMEIRO QUADRO: FILTROS -->
+        <!-- QUADRO DE BUSCA E FILTROS -->
         <section class="painel-filtros" aria-labelledby="titulo-filtros">
 
-            <div class="titulo-painel">
-
-                <div>
-                    <h2 id="titulo-filtros">Busca e filtros</h2>
-
-                    <p>
-                        Use os filtros para organizar a visualização das tarefas.
-                    </p>
-                </div>
-
-                <div
-                    id="mensagem-status"
-                    role="status"
-                    aria-live="polite"
-                ></div>
-
+            <div class="cabecalho-filtros">
+                <h2 id="titulo-filtros">Busca e filtros</h2>
+                <p>Organize a visualização das tarefas.</p>
             </div>
 
+            <p id="mensagem-status" class="mensagem-status">
+                Carregando tarefas...
+            </p>
 
             <form class="formulario-filtros">
 
                 <fieldset>
-
                     <legend>Filtrar por status</legend>
 
-                    <label for="filtro-status">
-                        Status:
-                    </label>
+                    <label for="filtro-status">Status:</label>
 
-                    <select
-                        id="filtro-status"
-                        name="status"
-                    >
+                    <select id="filtro-status" name="status">
                         <option value="todos">Todos</option>
                         <option value="a-fazer">A fazer</option>
                         <option value="em-andamento">Em andamento</option>
                         <option value="em-revisao">Em revisão</option>
                         <option value="concluida">Concluída</option>
                     </select>
-
                 </fieldset>
 
 
                 <fieldset>
-
                     <legend>Filtrar por prioridade</legend>
 
-                    <label for="filtro-prioridade">
-                        Prioridade:
-                    </label>
+                    <label for="filtro-prioridade">Prioridade:</label>
 
-                    <select
-                        id="filtro-prioridade"
-                        name="prioridade"
-                    >
+                    <select id="filtro-prioridade" name="prioridade">
                         <option value="todas">Todas</option>
-                        <option value="baixa">Baixa</option>
-                        <option value="media">Média</option>
                         <option value="alta">Alta</option>
+                        <option value="media">Média</option>
+                        <option value="baixa">Baixa</option>
                     </select>
-
                 </fieldset>
 
             </form>
@@ -115,175 +49,76 @@
         </section>
 
 
-        <!-- SEGUNDO QUADRO: MEU QUADRO -->
-        <section
-            class="painel-quadro"
-            aria-labelledby="titulo-quadro"
-        >
+        <!-- QUADRO DE TAREFAS -->
+        <section class="painel-quadro" aria-labelledby="titulo-quadro">
 
             <div class="cabecalho-quadro">
-
-                <div>
-                    <h2 id="titulo-quadro">
-                        Meu quadro
-                    </h2>
-
-                    <p>
-                        Visualize suas tarefas por etapa.
-                    </p>
-                </div>
-
+                <h2 id="titulo-quadro">Meu quadro</h2>
+                <p>Visualize suas tarefas por etapa.</p>
             </div>
 
 
             <div class="quadro-kanban">
 
-
-                <!-- A FAZER -->
-                <section
-                    class="coluna coluna-a-fazer"
-                    aria-labelledby="titulo-a-fazer"
-                >
+                <section class="coluna coluna-a-fazer"
+                    aria-labelledby="titulo-a-fazer">
 
                     <div class="cabecalho-coluna">
-
-                        <h3 id="titulo-a-fazer">
-                            A fazer
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-a-fazer"
-                        >
-                            0
-                        </span>
-
+                        <h3 id="titulo-a-fazer">A fazer</h3>
+                        <span id="contador-a-fazer">0</span>
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-a-fazer"
-                    ></ul>
+                    <ul id="lista-a-fazer">
+                    </ul>
 
                 </section>
 
 
-                <!-- EM ANDAMENTO -->
-                <section
-                    class="coluna coluna-em-andamento"
-                    aria-labelledby="titulo-em-andamento"
-                >
+                <section class="coluna coluna-em-andamento"
+                    aria-labelledby="titulo-em-andamento">
 
                     <div class="cabecalho-coluna">
-
-                        <h3 id="titulo-em-andamento">
-                            Em andamento
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-em-andamento"
-                        >
-                            0
-                        </span>
-
+                        <h3 id="titulo-em-andamento">Em andamento</h3>
+                        <span id="contador-em-andamento">0</span>
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-em-andamento"
-                    ></ul>
+                    <ul id="lista-em-andamento">
+                    </ul>
 
                 </section>
 
 
-                <!-- EM REVISÃO -->
-                <section
-                    class="coluna coluna-em-revisao"
-                    aria-labelledby="titulo-em-revisao"
-                >
+                <section class="coluna coluna-em-revisao"
+                    aria-labelledby="titulo-em-revisao">
 
                     <div class="cabecalho-coluna">
-
-                        <h3 id="titulo-em-revisao">
-                            Em revisão
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-em-revisao"
-                        >
-                            0
-                        </span>
-
+                        <h3 id="titulo-em-revisao">Em revisão</h3>
+                        <span id="contador-em-revisao">0</span>
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-em-revisao"
-                    ></ul>
+                    <ul id="lista-em-revisao">
+                    </ul>
 
                 </section>
 
 
-                <!-- CONCLUÍDA -->
-                <section
-                    class="coluna coluna-concluida"
-                    aria-labelledby="titulo-concluida"
-                >
+                <section class="coluna coluna-concluida"
+                    aria-labelledby="titulo-concluida">
 
                     <div class="cabecalho-coluna">
-
-                        <h3 id="titulo-concluida">
-                            Concluída
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-concluida"
-                        >
-                            0
-                        </span>
-
+                        <h3 id="titulo-concluida">Concluída</h3>
+                        <span id="contador-concluida">0</span>
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-concluida"
-                    ></ul>
+                    <ul id="lista-concluida">
+                    </ul>
 
                 </section>
-
 
             </div>
 
         </section>
 
-    </main>
+    </div>
 
-
-    <footer class="rodape">
-
-        <p>
-            Heitor Mota da Cruz
-        </p>
-
-        <p>
-            Disciplina: DESENVOLVIMENTO FRONT-END
-        </p>
-
-    </footer>
-
-
-    <script
-        type="module"
-        src="./js/api.js"
-    ></script>
-
-</body>
-
-</html>
+</main>
