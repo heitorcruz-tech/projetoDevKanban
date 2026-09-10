@@ -64,7 +64,7 @@ p {
 }
 
 h1 {
-    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 h2 {
@@ -72,33 +72,148 @@ h2 {
 }
 
 h3 {
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 
 p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 
 /* =========================================================
-   CABEÇALHO
+   BARRA SUPERIOR
    ========================================================= */
 
 .cabecalho {
-    background-color: #172b4d;
-    color: #ffffff;
+    background-color: #ffffff;
 
-    padding: var(--espaco-3);
+    border-bottom: 1px solid var(--cor-borda);
+
+    padding: 0.75rem var(--espaco-2);
+
+    box-shadow: 0 0.1rem 0.35rem rgba(9, 30, 66, 0.08);
 }
 
 .cabecalho-conteudo {
     width: min(100%, 90rem);
+
     margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espaco-2);
 }
 
-.cabecalho p {
-    margin-top: var(--espaco-1);
-    color: #dfe1e6;
+.marca {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.75rem;
+}
+
+.marca h1 {
+    font-weight: 700;
+}
+
+.marca p {
+    margin-top: 0.1rem;
+
+    color: var(--cor-texto-secundario);
+}
+
+.icone-marca {
+    width: 2.25rem;
+    height: 2.25rem;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.45rem;
+
+    background-color: #0c66e4;
+
+    color: #ffffff;
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BARRA DE PESQUISA
+   ========================================================= */
+
+.barra-busca {
+    width: 100%;
+}
+
+.barra-busca > label {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+.campo-busca {
+    position: relative;
+
+    width: 100%;
+}
+
+.icone-busca {
+    position: absolute;
+
+    left: 0.85rem;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--cor-texto-secundario);
+
+    font-size: 1.25rem;
+
+    pointer-events: none;
+}
+
+input,
+select {
+    width: 100%;
+
+    min-height: 2.75rem;
+
+    padding: 0.55rem 0.8rem;
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 0.5rem;
+
+    background-color: var(--cor-superficie);
+
+    color: var(--cor-texto);
+
+    font: inherit;
+}
+
+.barra-busca input {
+    padding-left: 2.4rem;
 }
 
 
@@ -114,18 +229,21 @@ main {
     padding: var(--espaco-3) 0;
 
     display: grid;
+
     gap: var(--espaco-3);
 }
 
 
 /* =========================================================
+   PRIMEIRO QUADRO
    BUSCA E FILTROS
    ========================================================= */
 
-.filtros {
+.painel-filtros {
     background-color: var(--cor-superficie);
 
     border: 1px solid var(--cor-borda);
+
     border-radius: var(--raio);
 
     padding: var(--espaco-3);
@@ -133,24 +251,48 @@ main {
     box-shadow: 0 0.15rem 0.4rem rgba(9, 30, 66, 0.08);
 }
 
-.filtros h2 {
-    margin-bottom: var(--espaco-2);
+.titulo-painel {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espaco-1);
+}
+
+.titulo-painel p {
+    margin-top: 0.25rem;
+
+    color: var(--cor-texto-secundario);
+}
+
+#mensagem-status {
+    color: var(--cor-texto-secundario);
+
+    font-size: 0.85rem;
 }
 
 .formulario-filtros {
     display: grid;
+
     gap: var(--espaco-2);
+
+    margin-top: var(--espaco-3);
 }
 
-.campo-busca,
 fieldset {
     min-width: 0;
-}
 
-.campo-busca {
     display: flex;
+
     flex-direction: column;
+
     gap: var(--espaco-1);
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 0.5rem;
+
+    padding: var(--espaco-2);
 }
 
 label,
@@ -158,40 +300,38 @@ legend {
     font-weight: 700;
 }
 
-input,
-select {
-    width: 100%;
 
-    min-height: 2.75rem;
+/* =========================================================
+   SEGUNDO QUADRO
+   MEU QUADRO
+   ========================================================= */
 
-    padding: 0.5rem 0.75rem;
-
-    border: 1px solid var(--cor-borda);
-    border-radius: 0.5rem;
-
+.painel-quadro {
     background-color: var(--cor-superficie);
-    color: var(--cor-texto);
-
-    font: inherit;
-}
-
-fieldset {
-    display: flex;
-    flex-direction: column;
-
-    gap: var(--espaco-1);
 
     border: 1px solid var(--cor-borda);
-    border-radius: 0.5rem;
+
+    border-radius: var(--raio);
 
     padding: var(--espaco-2);
+
+    box-shadow: 0 0.15rem 0.4rem rgba(9, 30, 66, 0.08);
 }
 
-#mensagem-status {
-    margin-bottom: var(--espaco-2);
+.cabecalho-quadro {
+    padding: 0.25rem 0.25rem var(--espaco-2);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.cabecalho-quadro p {
+    margin-top: 0.25rem;
 
     color: var(--cor-texto-secundario);
-    font-size: 0.9rem;
 }
 
 
@@ -225,6 +365,7 @@ fieldset {
     padding: var(--espaco-2);
 
     display: flex;
+
     flex-direction: column;
 
     gap: var(--espaco-2);
@@ -263,18 +404,19 @@ fieldset {
     gap: var(--espaco-2);
 }
 
-.cabecalho-coluna h2 {
+.cabecalho-coluna h3 {
     color: var(--cor-status);
 
     text-transform: uppercase;
 
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .contador {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 1.75rem;
@@ -289,6 +431,7 @@ fieldset {
     color: #ffffff;
 
     font-size: 0.8rem;
+
     font-weight: 700;
 }
 
@@ -301,6 +444,7 @@ fieldset {
     list-style: none;
 
     padding: 0;
+
     margin: 0;
 
     display: flex;
@@ -342,7 +486,9 @@ fieldset {
 
     box-shadow: 0 0.15rem 0.3rem rgba(9, 30, 66, 0.12);
 
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 .cartao-tarefa:hover {
@@ -412,9 +558,11 @@ fieldset {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 4.5rem;
+
     min-height: 1.75rem;
 
     padding: 0.25rem 0.5rem;
@@ -501,12 +649,30 @@ select:focus-visible {
 
 @media (min-width: 42rem) {
 
-    .formulario-filtros {
-        grid-template-columns: 2fr 1fr 1fr;
+    .cabecalho-conteudo {
+        flex-direction: row;
 
-        align-items: end;
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: var(--espaco-3);
     }
 
+    .barra-busca {
+        width: min(100%, 38rem);
+    }
+
+    .formulario-filtros {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        align-items: stretch;
+    }
+
+    .painel-quadro {
+        padding: var(--espaco-3);
+    }
 }
 
 
@@ -517,7 +683,8 @@ select:focus-visible {
 @media (min-width: 55rem) {
 
     .quadro-kanban {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
 }
@@ -531,9 +698,14 @@ select:focus-visible {
 @media (min-width: 70rem) {
 
     .quadro-kanban {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
 
         align-items: start;
+    }
+
+    .painel-filtros {
+        padding: var(--espaco-3);
     }
 
 }
