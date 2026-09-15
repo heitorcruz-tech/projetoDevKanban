@@ -48,7 +48,6 @@
         <section class="painel-filtros" aria-labelledby="titulo-filtros">
 
             <div class="titulo-painel">
-
                 <div>
                     <h2 id="titulo-filtros">Busca e filtros</h2>
 
@@ -62,7 +61,6 @@
                     role="status"
                     aria-live="polite"
                 ></div>
-
             </div>
 
 
@@ -109,6 +107,34 @@
                     </select>
 
                 </fieldset>
+
+
+                <fieldset>
+
+                    <legend>Ordenar tarefas</legend>
+
+                    <label for="ordenacao">
+                        Prazo:
+                    </label>
+
+                    <select
+                        id="ordenacao"
+                        name="ordenacao"
+                    >
+                        <option value="nenhuma">Sem ordenação</option>
+                        <option value="crescente">Mais próximo primeiro</option>
+                        <option value="decrescente">Mais distante primeiro</option>
+                    </select>
+
+                </fieldset>
+
+
+                <button
+                    type="button"
+                    id="limpar-filtros"
+                >
+                    Limpar filtros
+                </button>
 
             </form>
 
