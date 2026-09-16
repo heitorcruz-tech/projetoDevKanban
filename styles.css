@@ -146,8 +146,14 @@ p {
 
 
 /* =========================================================
-   BARRA DE PESQUISA
+   BARRA DE PESQUISA E FILTROS (CABEÇALHO DO QUADRO)
    ========================================================= */
+
+.controles-quadro {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
 .barra-busca {
     width: 100%;
@@ -216,6 +222,84 @@ select {
     padding-left: 2.4rem;
 }
 
+/* POPOVER / MENU SUSPENSO DE FILTROS (<details>) */
+
+.menu-filtros {
+    position: relative;
+}
+
+.menu-filtros summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.5rem;
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+}
+
+.menu-filtros summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-filtros .formulario-filtros {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    width: 18rem;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: var(--espaco-2);
+    box-shadow: 0 0.4rem 1rem rgba(9, 30, 66, 0.15);
+    z-index: 10;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.formulario-filtros button#limpar-filtros {
+    min-height: 2.5rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.5rem;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.formulario-filtros button#limpar-filtros:hover {
+    background-color: #dfe1e6;
+}
+
+fieldset {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espaco-1);
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 0.5rem;
+
+    padding: var(--espaco-2);
+}
+
+label,
+legend {
+    font-weight: 700;
+}
+
 
 /* =========================================================
    CONTEÚDO PRINCIPAL
@@ -235,8 +319,7 @@ main {
 
 
 /* =========================================================
-   PRIMEIRO QUADRO
-   BUSCA E FILTROS
+   PRIMEIRO QUADRO: CAIXA DE ENTRADA (SIDEBAR)
    ========================================================= */
 
 .painel-filtros {
@@ -271,39 +354,40 @@ main {
     font-size: 0.85rem;
 }
 
-.formulario-filtros {
-    display: grid;
-
-    gap: var(--espaco-2);
-
-    margin-top: var(--espaco-3);
-}
-
-fieldset {
-    min-width: 0;
-
+.lista-quadros {
+    list-style: none;
+    padding: 0;
+    margin: var(--espaco-2) 0 0 0;
     display: flex;
-
     flex-direction: column;
-
     gap: var(--espaco-1);
-
-    border: 1px solid var(--cor-borda);
-
-    border-radius: 0.5rem;
-
-    padding: var(--espaco-2);
 }
 
-label,
-legend {
+.quadro-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 0.5rem;
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
     font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.quadro-item:hover,
+.quadro-item.ativo {
+    background-color: #ebecf0;
+    border-color: #c1c7d0;
 }
 
 
 /* =========================================================
-   SEGUNDO QUADRO
-   MEU QUADRO
+   SEGUNDO QUADRO: MEU QUADRO KANBAN
    ========================================================= */
 
 .painel-quadro {
@@ -336,8 +420,7 @@ legend {
 
 
 /* =========================================================
-   QUADRO KANBAN
-   MOBILE-FIRST
+   QUADRO KANBAN (MOBILE-FIRST)
    ========================================================= */
 
 .quadro-kanban {
@@ -613,7 +696,8 @@ legend {
    ========================================================= */
 
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+summary:focus-visible {
     outline: 0.2rem solid var(--cor-foco);
 
     outline-offset: 0.15rem;
@@ -644,7 +728,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   BREAKPOINT 1
+   BREAKPOINT 1 (TABLET / TELAS MÉDIAS)
    ========================================================= */
 
 @media (min-width: 42rem) {
@@ -660,14 +744,7 @@ select:focus-visible {
     }
 
     .barra-busca {
-        width: min(100%, 38rem);
-    }
-
-    .formulario-filtros {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        align-items: stretch;
+        width: 16rem;
     }
 
     .painel-quadro {
@@ -677,7 +754,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   BREAKPOINT 2
+   BREAKPOINT 2 (KANBAN 2 COLUNAS)
    ========================================================= */
 
 @media (min-width: 55rem) {
@@ -691,7 +768,7 @@ select:focus-visible {
 
 
 /* =========================================================
-   BREAKPOINT 3
+   BREAKPOINT 3 (DESKTOP / LADO A LADO)
    ========================================================= */
 
 @media (min-width: 70rem) {
@@ -705,7 +782,7 @@ select:focus-visible {
         align-items: start;
     }
 
-    /* O MEU QUADRO CONTINUA COM 4 COLUNAS */
+    /* O KANBAN CONTINUA COM 4 COLUNAS */
 
     .quadro-kanban {
         grid-template-columns:
