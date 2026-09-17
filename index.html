@@ -10,7 +10,6 @@
 
 <body>
 
-    <!-- BARRA SUPERIOR -->
     <header class="cabecalho">
         <div class="cabecalho-conteudo">
 
@@ -23,125 +22,46 @@
                 </div>
             </div>
 
-            <div class="barra-busca">
-                <label for="busca">Buscar tarefa por título:</label>
-
-                <div class="campo-busca">
-                    <span class="icone-busca" aria-hidden="true">⌕</span>
-
-                    <input
-                        type="search"
-                        id="busca"
-                        name="busca"
-                        placeholder="Buscar tarefa..."
-                    >
-                </div>
-            </div>
-
         </div>
     </header>
 
-
     <main>
 
-        <!-- PRIMEIRO QUADRO: FILTROS -->
-        <section class="painel-filtros" aria-labelledby="titulo-filtros">
+        <section
+            class="painel-filtros caixa-entrada"
+            aria-labelledby="titulo-caixa-entrada"
+        >
 
             <div class="titulo-painel">
                 <div>
-                    <h2 id="titulo-filtros">Busca e filtros</h2>
-
-                    <p>
-                        Use os filtros para organizar a visualização das tarefas.
-                    </p>
+                    <h2 id="titulo-caixa-entrada">Caixa de entrada</h2>
+                    <p>Selecione um quadro para visualizar suas tarefas.</p>
                 </div>
-
-                <div
-                    id="mensagem-status"
-                    role="status"
-                    aria-live="polite"
-                ></div>
             </div>
 
+            <nav aria-label="Quadros">
+                <ul id="lista-quadros" class="lista-quadros">
+                    <li>
+                        <button
+                            type="button"
+                            class="quadro-item ativo"
+                            data-quadro="todos"
+                        >
+                            <span>▦</span>
+                            Todos os quadros
+                        </button>
+                    </li>
+                </ul>
+            </nav>
 
-            <form class="formulario-filtros">
-
-                <fieldset>
-
-                    <legend>Filtrar por status</legend>
-
-                    <label for="filtro-status">
-                        Status:
-                    </label>
-
-                    <select
-                        id="filtro-status"
-                        name="status"
-                    >
-                        <option value="todos">Todos</option>
-                        <option value="a-fazer">A fazer</option>
-                        <option value="em-andamento">Em andamento</option>
-                        <option value="em-revisao">Em revisão</option>
-                        <option value="concluida">Concluída</option>
-                    </select>
-
-                </fieldset>
-
-
-                <fieldset>
-
-                    <legend>Filtrar por prioridade</legend>
-
-                    <label for="filtro-prioridade">
-                        Prioridade:
-                    </label>
-
-                    <select
-                        id="filtro-prioridade"
-                        name="prioridade"
-                    >
-                        <option value="todas">Todas</option>
-                        <option value="baixa">Baixa</option>
-                        <option value="media">Média</option>
-                        <option value="alta">Alta</option>
-                    </select>
-
-                </fieldset>
-
-
-                <fieldset>
-
-                    <legend>Ordenar tarefas</legend>
-
-                    <label for="ordenacao">
-                        Prazo:
-                    </label>
-
-                    <select
-                        id="ordenacao"
-                        name="ordenacao"
-                    >
-                        <option value="nenhuma">Sem ordenação</option>
-                        <option value="crescente">Mais próximo primeiro</option>
-                        <option value="decrescente">Mais distante primeiro</option>
-                    </select>
-
-                </fieldset>
-
-
-                <button
-                    type="button"
-                    id="limpar-filtros"
-                >
-                    Limpar filtros
-                </button>
-
-            </form>
+            <div
+                id="mensagem-status"
+                role="status"
+                aria-live="polite"
+            ></div>
 
         </section>
 
-
-        <!-- SEGUNDO QUADRO: MEU QUADRO -->
         <section
             class="painel-quadro"
             aria-labelledby="titulo-quadro"
@@ -149,141 +69,143 @@
 
             <div class="cabecalho-quadro">
 
-                <div>
-                    <h2 id="titulo-quadro">
-                        Meu quadro
-                    </h2>
-
-                    <p>
-                        Visualize suas tarefas por etapa.
-                    </p>
+                <div class="titulo-quadro">
+                    <h2 id="titulo-quadro">Meu quadro</h2>
+                    <p>Visualize suas tarefas por etapa.</p>
                 </div>
 
-            </div>
+                <div class="controles-quadro">
 
+                    <div class="barra-busca">
+                        <label for="busca">Buscar tarefa:</label>
+
+                        <div class="campo-busca">
+                            <span class="icone-busca" aria-hidden="true">⌕</span>
+
+                            <input
+                                type="search"
+                                id="busca"
+                                name="busca"
+                                placeholder="Buscar tarefa..."
+                            >
+                        </div>
+                    </div>
+
+                    <details class="menu-filtros">
+                        <summary>⚙ Filtros</summary>
+
+                        <form class="formulario-filtros">
+
+                            <fieldset>
+                                <legend>Filtrar por status</legend>
+
+                                <label for="filtro-status">Status:</label>
+
+                                <select id="filtro-status" name="status">
+                                    <option value="todos">Todos</option>
+                                    <option value="a-fazer">A fazer</option>
+                                    <option value="em-andamento">Em andamento</option>
+                                    <option value="em-revisao">Em revisão</option>
+                                    <option value="concluida">Concluída</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Filtrar por prioridade</legend>
+
+                                <label for="filtro-prioridade">Prioridade:</label>
+
+                                <select id="filtro-prioridade" name="prioridade">
+                                    <option value="todas">Todas</option>
+                                    <option value="baixa">Baixa</option>
+                                    <option value="media">Média</option>
+                                    <option value="alta">Alta</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Ordenar tarefas</legend>
+
+                                <label for="ordenacao">Prazo:</label>
+
+                                <select id="ordenacao" name="ordenacao">
+                                    <option value="nenhuma">Sem ordenação</option>
+                                    <option value="crescente">Mais próximo primeiro</option>
+                                    <option value="decrescente">Mais distante primeiro</option>
+                                </select>
+                            </fieldset>
+
+                            <button type="button" id="limpar-filtros">
+                                Limpar filtros
+                            </button>
+
+                        </form>
+                    </details>
+
+                </div>
+            </div>
 
             <div class="quadro-kanban">
 
-
-                <!-- A FAZER -->
                 <section
                     class="coluna coluna-a-fazer"
                     aria-labelledby="titulo-a-fazer"
                 >
-
                     <div class="cabecalho-coluna">
+                        <h3 id="titulo-a-fazer">A fazer</h3>
 
-                        <h3 id="titulo-a-fazer">
-                            A fazer
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-a-fazer"
-                        >
+                        <span class="contador" id="contador-a-fazer">
                             0
                         </span>
-
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-a-fazer"
-                    ></ul>
-
+                    <ul class="lista-tarefas" id="lista-a-fazer"></ul>
                 </section>
 
-
-                <!-- EM ANDAMENTO -->
                 <section
                     class="coluna coluna-em-andamento"
                     aria-labelledby="titulo-em-andamento"
                 >
-
                     <div class="cabecalho-coluna">
+                        <h3 id="titulo-em-andamento">Em andamento</h3>
 
-                        <h3 id="titulo-em-andamento">
-                            Em andamento
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-em-andamento"
-                        >
+                        <span class="contador" id="contador-em-andamento">
                             0
                         </span>
-
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-em-andamento"
-                    ></ul>
-
+                    <ul class="lista-tarefas" id="lista-em-andamento"></ul>
                 </section>
 
-
-                <!-- EM REVISÃO -->
                 <section
                     class="coluna coluna-em-revisao"
                     aria-labelledby="titulo-em-revisao"
                 >
-
                     <div class="cabecalho-coluna">
+                        <h3 id="titulo-em-revisao">Em revisão</h3>
 
-                        <h3 id="titulo-em-revisao">
-                            Em revisão
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-em-revisao"
-                        >
+                        <span class="contador" id="contador-em-revisao">
                             0
                         </span>
-
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-em-revisao"
-                    ></ul>
-
+                    <ul class="lista-tarefas" id="lista-em-revisao"></ul>
                 </section>
 
-
-                <!-- CONCLUÍDA -->
                 <section
                     class="coluna coluna-concluida"
                     aria-labelledby="titulo-concluida"
                 >
-
                     <div class="cabecalho-coluna">
+                        <h3 id="titulo-concluida">Concluída</h3>
 
-                        <h3 id="titulo-concluida">
-                            Concluída
-                        </h3>
-
-                        <span
-                            class="contador"
-                            id="contador-concluida"
-                        >
+                        <span class="contador" id="contador-concluida">
                             0
                         </span>
-
                     </div>
 
-
-                    <ul
-                        class="lista-tarefas"
-                        id="lista-concluida"
-                    ></ul>
-
+                    <ul class="lista-tarefas" id="lista-concluida"></ul>
                 </section>
-
 
             </div>
 
@@ -291,24 +213,12 @@
 
     </main>
 
-
     <footer class="rodape">
-
-        <p>
-            Heitor Mota da Cruz
-        </p>
-
-        <p>
-            Disciplina: DESENVOLVIMENTO FRONT-END
-        </p>
-
+        <p>Heitor Mota da Cruz</p>
+        <p>Disciplina: DESENVOLVIMENTO FRONT-END</p>
     </footer>
 
-
-    <script
-        type="module"
-        src="./js/api.js"
-    ></script>
+    <script type="module" src="./js/api.js"></script>
 
 </body>
 
